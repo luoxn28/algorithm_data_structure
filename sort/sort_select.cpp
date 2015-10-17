@@ -4,13 +4,25 @@ using namespace std;
 
 void select_sort(int a[], int length);
 
+#define N 100
 int main(void)
 {
-	int a[5] = {-1, 6, 2, 0, 12};
+	int left = 0;
+	int right = 100;
+	int arr[N];
 
-	select_sort(a, 5);
-	for (int i = 0; i < 5; i++)
-		cout << a[i] << " ";
+	srand(time(NULL));
+
+	for (int i = 0; i < N; i++)
+	{
+		int x = rand() % (right - left) + left;
+		arr[i] = x;
+	}
+
+	select_sort(arr, N);
+
+	for (int i = 0; i < N; i++)
+		cout << arr[i] << " ";
 	cout << endl;
 
 	return 0;
