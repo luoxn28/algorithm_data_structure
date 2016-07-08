@@ -1,25 +1,24 @@
 package graph;
 
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 
-/**
- * 深度优先搜索
- */
-public class DepthFirstSearch {
+public class BreadthFirstSearch {
 
     // ---------------------------------- Instance Variables
 
     // 无向图
     Digraph graph;
 
-    // 深度优先搜索后的顶点顺序
+    // 广度优先搜索后的顶点顺序
     List<Integer> sorted = new ArrayList<Integer>();
 
     // ---------------------------------- Constructors
 
-    public DepthFirstSearch(Digraph graph, int node) {
+    public BreadthFirstSearch(Digraph graph, int node) {
         if (node >= graph.getVertaxs()) {
             return;
         }
@@ -27,7 +26,7 @@ public class DepthFirstSearch {
         this.graph = graph;
         // boolean数组默认都置为false，所以不用专门初始化
         boolean []marked = new boolean[graph.getVertaxs()];
-        dfs(node, marked);
+        bfs(node, marked);
     }
 
     // ---------------------------------- Public Methods
@@ -38,16 +37,22 @@ public class DepthFirstSearch {
 
     // ---------------------------------- Private Methods
 
-    private void dfs(int node, boolean []marked) {
-        if (marked[node]) {
-            return;
-        }
+    private void bfs(int node, boolean []marked) {
+        Deque<Integer> deque = new ArrayDeque<Integer>();
 
         marked[node] = true;
         sorted.add(node);
-        List<Integer> nodes = this.graph.adj(node);
-        for (int i = 0; i < nodes.size(); i++) {
-            dfs(nodes.get(i), marked);
+        deque.addLast(node);
+        while (deque.size() > 0) {
+            int vertax = deque.pollFirst();
+            List<Integer> list = this.graph.adj(vertax);
+            for (Integer ele : list) {
+                if (!marked[ele]) {
+                    marked[ele] = true;
+                    sorted.add(ele);
+                    deque.addLast(ele);
+                }
+            }
         }
     }
 

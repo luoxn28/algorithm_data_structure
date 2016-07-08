@@ -88,6 +88,16 @@ public class Digraph {
         }
         return edges >> 1;
     }
+	/**
+     * 返回某个顶点向关联的所有顶点
+     */
+    public List<Integer> adj(int a) {
+        if (a >= array.size()) {
+            return new ArrayList<Integer>();
+        }
+
+        return array.get(a);
+    }
 
     @Override
     public String toString() {
