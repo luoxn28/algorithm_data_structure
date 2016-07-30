@@ -32,6 +32,11 @@ public class Graph {
 
     // ---------------------------------- Public Methods
 
+    // 返回顶点个数
+    public int getVertaxs() {
+        return array.size();
+    }
+
     // 往有向图中添加边(a, b)，方向 a -> b
     public void add(int a, int b) {
         if (a >= array.size() || b >= array.size()) {
