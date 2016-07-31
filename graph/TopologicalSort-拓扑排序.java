@@ -40,7 +40,7 @@ class DepthFirstSearch {
 
     // ---------------------------------- Instance Variables
 
-    // 无向图
+    // 有向图
     Graph graph;
 
     // 深度优先搜索后的顶点顺序
