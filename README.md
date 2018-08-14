@@ -1,4 +1,5 @@
-	This Repository contains data structure and algorithm.I will add code files to it slowly.
+
+> This Repository contains data structure and algorithm. I will add code files to it slowly.
 
 graph:
 	关于图的各种数据结构和算法
